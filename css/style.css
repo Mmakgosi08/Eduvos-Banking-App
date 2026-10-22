@@ -1,0 +1,316 @@
+/* ============================================================
+   Eduvos Banking App — SHARED STYLES
+   Everyone links to this file. Add new styles at the bottom of
+   the relevant section, never hardcode colours in your pages.
+   Palette taken from the group's design reference (dark navy).
+   ============================================================ */
+
+/* ---------- 1. Design tokens (CSS variables) ---------- */
+:root {
+  /* Colours */
+  --colour-navy:        #0b2547;   /* primary dark */
+  --colour-navy-deep:   #071a33;   /* page background base */
+  --colour-primary:     #16406b;   /* buttons, headings on light */
+  --colour-primary-hover: #1d5290;
+  --colour-accent:      #2e6fd6;   /* links, focus accents */
+  --colour-surface:     #ffffff;   /* cards, form panels */
+  --colour-text:        #17202b;   /* main text on light */
+  --colour-text-muted:  #5c6b7a;   /* secondary text */
+  --colour-border:      #d5dde6;
+  --colour-error:       #c0392b;
+  --colour-success:     #1e8e5a;
+  --colour-focus-ring:  #7db3ff;
+
+  /* Typography */
+  --font-stack: "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+
+  /* Shape & depth */
+  --radius-card: 18px;
+  --radius-input: 12px;
+  --shadow-card: 0 12px 30px rgba(0, 0, 0, 0.25);
+
+  /* Spacing */
+  --space-xs: 0.4rem;
+  --space-sm: 0.75rem;
+  --space-md: 1.25rem;
+  --space-lg: 2rem;
+}
+
+/* ---------- 2. Base / reset ---------- */
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+html { font-size: 100%; }
+
+body {
+  margin: 0;
+  font-family: var(--font-stack);
+  color: var(--colour-text);
+  background: var(--colour-navy-deep);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3 { line-height: 1.2; margin: 0 0 var(--space-sm); }
+p { margin: 0 0 var(--space-sm); }
+a { color: var(--colour-accent); }
+
+/* Visible focus states for keyboard users (accessibility) */
+:focus-visible {
+  outline: 3px solid var(--colour-focus-ring);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Screen-reader-only helper */
+.sr-only {
+  position: absolute;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ---------- 3. Login page layout (index.html) ---------- */
+.login-body {
+  /* Dark layered gradient inspired by the group reference design */
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background:
+    radial-gradient(120% 90% at 80% -10%, #1c4e89 0%, transparent 55%),
+    radial-gradient(100% 80% at 10% 110%, #123c6e 0%, transparent 55%),
+    linear-gradient(180deg, var(--colour-navy-deep) 0%, var(--colour-navy) 100%);
+  color: var(--colour-surface);
+}
+
+.login-main {
+  flex: 1;
+  width: 100%;
+  max-width: 430px;
+  margin: 0 auto;
+  padding: var(--space-lg) var(--space-md);
+  display: flex;
+  flex-direction: column;
+}
+
+/* Brand header: bank icon + wordmark */
+.login-brand {
+  text-align: center;
+  margin-bottom: var(--space-lg);
+}
+
+.login-brand .brand-icon {
+  width: 56px;
+  height: 56px;
+  color: var(--colour-surface);
+}
+
+.login-brand h1 {
+  font-size: 1.7rem;
+  letter-spacing: 0.5px;
+  margin: var(--space-sm) 0 0;
+}
+
+.login-brand .tagline {
+  font-size: 0.85rem;
+  opacity: 0.75;
+  margin: 0;
+}
+
+/* Welcome heading above the card */
+.login-welcome { margin-bottom: var(--space-md); }
+.login-welcome h2 { font-size: 1.5rem; margin-bottom: 2px; }
+.login-welcome p { opacity: 0.8; font-size: 0.95rem; margin: 0; }
+
+/* The white card that holds the form */
+.login-card {
+  background: var(--colour-surface);
+  color: var(--colour-text);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card);
+  padding: var(--space-lg) var(--space-md);
+}
+
+.login-footer {
+  text-align: center;
+  font-size: 0.85rem;
+  opacity: 0.7;
+  padding: var(--space-md);
+  letter-spacing: 1px;
+  word-spacing: 6px;
+}
+
+/* ---------- 4. Forms ---------- */
+.field { margin-bottom: var(--space-md); }
+
+.field label {
+  display: block;
+  font-weight: 600;
+  font-size: 0.9rem;
+  margin-bottom: var(--space-xs);
+}
+
+.input-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.input-wrap .input-icon {
+  position: absolute;
+  left: 0.8rem;
+  width: 20px;
+  height: 20px;
+  color: var(--colour-text-muted);
+  pointer-events: none;
+}
+
+.input-wrap input {
+  width: 100%;
+  padding: 0.85rem 2.6rem 0.85rem 2.6rem; /* room for icon (and eye on password) */
+  font-size: 1rem;
+  font-family: inherit;
+  color: var(--colour-text);
+  background: #f6f8fb;
+  border: 1.5px solid var(--colour-border);
+  border-radius: var(--radius-input);
+  transition: border-color 0.15s ease, background 0.15s ease;
+}
+
+.input-wrap input::placeholder { color: #9aa7b4; }
+
+.input-wrap input:focus {
+  border-color: var(--colour-accent);
+  background: var(--colour-surface);
+  outline: none;
+}
+
+/* Error state: JS adds .invalid to the input */
+.input-wrap input.invalid { border-color: var(--colour-error); }
+
+/* Eye toggle inside password field */
+.toggle-password {
+  position: absolute;
+  right: 0.6rem;
+  background: none;
+  border: none;
+  padding: 0.35rem;
+  cursor: pointer;
+  color: var(--colour-text-muted);
+  border-radius: 8px;
+}
+.toggle-password:hover { color: var(--colour-text); }
+.toggle-password svg { width: 22px; height: 22px; display: block; }
+
+/* Row: remember me + forgot password */
+.login-options {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-md);
+  font-size: 0.85rem;
+}
+
+.checkbox-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  color: var(--colour-text);
+}
+.checkbox-label input { width: 17px; height: 17px; accent-color: var(--colour-primary); cursor: pointer; }
+
+.forgot-link { white-space: nowrap; }
+
+/* Sign-up row at the bottom of the card */
+.login-signup {
+  text-align: center;
+  font-size: 0.9rem;
+  margin: var(--space-md) 0 0;
+}
+.login-signup a { font-weight: 700; }
+
+/* ---------- 5. Buttons ---------- */
+.btn {
+  display: inline-block;
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 0.85rem 1.5rem;
+  border: none;
+  border-radius: var(--radius-input);
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  transition: background 0.15s ease, transform 0.05s ease;
+}
+
+.btn:active { transform: translateY(1px); }
+
+.btn-primary {
+  width: 100%;
+  background: var(--colour-primary);
+  color: var(--colour-surface);
+}
+.btn-primary:hover { background: var(--colour-primary-hover); }
+
+/* ---------- 6. Validation / alert messages ---------- */
+.field-error {
+  display: none; /* JS toggles this */
+  color: var(--colour-error);
+  font-size: 0.82rem;
+  margin-top: var(--space-xs);
+}
+
+.field-error.visible { display: block; }
+
+.form-alert {
+  display: none; /* JS toggles this */
+  background: #fdecea;
+  color: var(--colour-error);
+  border: 1px solid #f5c6c0;
+  border-radius: var(--radius-input);
+  padding: var(--space-sm) var(--space-md);
+  margin-bottom: var(--space-md);
+  font-size: 0.9rem;
+}
+
+.form-alert.visible { display: block; }
+
+/* ---------- 7. Shared navigation bar (other pages use this) ---------- */
+.nav-bar {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  background: var(--colour-navy);
+  padding: var(--space-sm) var(--space-md);
+}
+
+.nav-bar a {
+  color: rgba(255, 255, 255, 0.75);
+  text-decoration: none;
+  font-weight: 600;
+  padding: 0.4rem 0.75rem;
+  border-radius: 8px;
+}
+
+.nav-bar a:hover { color: #fff; }
+
+.nav-bar a[aria-current="page"] {
+  background: rgba(255, 255, 255, 0.15);
+  color: #fff;
+}
+
+.nav-bar .nav-spacer { flex: 1; }
+
+/* ---------- 8. Small screens ---------- */
+@media (max-width: 400px) {
+  .login-main { padding: var(--space-md) var(--space-sm); }
+  .login-card { padding: var(--space-md); }
+  .login-options { flex-direction: column; align-items: flex-start; }
+}
