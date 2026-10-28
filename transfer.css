@@ -1,0 +1,60 @@
+/* Extra styles for the Transfer page.
+   Load AFTER style.css. It reuses the login page classes (login-card, field,
+   input-wrap, field-error, form-alert, btn, btn-primary). If your style.css
+   already has colour variables, swap the hex values below for them. */
+
+.hidden { display: none !important; }
+
+.balance-strip {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  max-width: 420px;
+  margin: 0 auto 16px;
+  padding: 12px 16px;
+  background: #fff;
+  border: 1px solid #d9e2e8;
+  border-radius: 10px;
+}
+.balance-strip span { font-size: .9rem; opacity: .7; }
+.balance-strip strong { font-size: 1.3rem; }
+
+.step-title { margin: 0 0 4px; }
+.step-note { margin: 0 0 16px; font-size: .9rem; opacity: .75; }
+
+.summary { margin: 0 0 18px; padding: 0; }
+.summary div {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 0;
+  border-bottom: 1px solid #e3eaef;
+}
+.summary dt { opacity: .7; }
+.summary dd { margin: 0; font-weight: 600; text-align: right; }
+
+.btn-row { display: flex; gap: 10px; }
+.btn-row .btn { flex: 1; }
+.btn-secondary {
+  background: #fff;
+  color: inherit;
+  border: 1.5px solid currentColor;
+}
+.btn-link { display: inline-block; text-align: center; text-decoration: none; }
+
+.input-wrap input.invalid { border-color: #b3261e; background: #fdecea; }
+
+.form-alert.success {
+  display: block;
+  background: #e5f4ea;
+  color: #1b6e3a;
+  border: 1px solid #1b6e3a;
+}
+
+.success-tick {
+  width: 56px; height: 56px; margin: 0 auto 12px;
+  border-radius: 50%;
+  background: #e5f4ea; color: #1b6e3a;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.8rem;
+}
